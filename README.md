@@ -186,3 +186,16 @@ GET /api/data-status
 ├── data/                  # 脱敏后的样例/回放数据，不存放密钥
 └── .github/               # CI、Issue 模板和发布流程
 ```
+
+## 实时数据与部署
+
+项目已接入浙江省水利厅台风路径实时发布系统公开接口：
+
+- 活跃台风列表：`https://typhoon.slt.zj.gov.cn/Api/TyhoonActivity`
+- 台风详情：`https://typhoon.slt.zj.gov.cn/Api/TyphoonInfo/{tfid}`
+- 数据抓取脚本：`scripts/fetch-typhoon.mjs`
+- 数据文件：`data/typhoon.json`
+- 每 15 分钟抓取：`.github/workflows/update-data.yml`
+- GitHub Pages 部署：`.github/workflows/pages.yml`
+
+页面会优先读取 `data/typhoon.json`；该文件由 GitHub Actions 定时更新。页面展示的是公开数据转载，不发布或替代气象、应急部门的官方预警，居民应以当地官方通知为准。
