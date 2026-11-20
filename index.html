@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#071b2f" />
+    <title>风眼｜台风实况预警</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="demo-banner"><span class="demo-dot"></span>演示模式 · 当前数据仅为演示使用，不作为实际防灾决策依据</div>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="风眼首页"><span class="brand-mark">◌</span><span>风眼<span class="brand-sub">/ 实况预警</span></span></a>
+      <div class="header-meta"><span class="live-pill"><i></i>数据模拟中</span><span class="update-time">更新于 2025/09/18 14:20</span><button class="icon-btn" id="refreshBtn" aria-label="刷新演示数据">↻</button></div>
+    </header>
+
+    <main id="top" class="shell">
+      <section class="intro">
+        <div><p class="kicker">COASTAL WEATHER MONITOR</p><h1>沿海实况，<em>一眼看懂</em></h1><p class="intro-copy">关注正在影响中国东南沿海的台风动态。先看你所在的区域，再决定下一步。</p></div>
+        <div class="location-card"><span class="location-pin">⌖</span><div><span class="muted-label">我的位置</span><strong>福建 · 厦门市</strong></div><button aria-label="切换位置">切换</button></div>
+      </section>
+
+      <section class="alert-hero" aria-label="当前预警">
+        <div class="alert-level"><span class="alert-icon">!</span><div><span class="eyebrow">本地预警 · 厦门市</span><h2>橙色台风预警</h2><p>预计未来 12 小时内将有强风雨影响，请减少外出。</p></div></div>
+        <div class="alert-action"><span>距离重点影响时段</span><strong>约 04<span>小时</span> 35<span>分</span></strong><button class="outline-btn" id="noticeBtn">查看行动建议 <span>→</span></button></div>
+      </section>
+
+      <section class="content-grid">
+        <div class="main-column">
+          <div class="section-heading"><div><span class="section-no">01 / 实况</span><h2>台风「桦加沙」</h2></div><span class="status-chip">强台风级</span></div>
+          <div class="stats-grid">
+            <article class="stat-card stat-main"><span class="stat-label">当前位置</span><strong>22.3<span>°N</span> · 119.8<span>°E</span></strong><p>台湾海峡东南部 · 距厦门约 210 km</p></article>
+            <article class="stat-card"><span class="stat-label">移动方向</span><strong>西北偏西 <b>↖</b></strong><p>速度 18 km/h</p></article>
+            <article class="stat-card wind-card"><span class="stat-label">中心最大风力</span><strong>14 <span>级</span></strong><p>风速 42 m/s · 阵风 52 m/s</p><div class="wind-bar"><i></i></div></article>
+            <article class="stat-card"><span class="stat-label">中心气压</span><strong>950 <span>hPa</span></strong><p>过去 3 小时下降 2 hPa</p></article>
+          </div>
+
+          <div class="section-heading map-heading"><div><span class="section-no">02 / 路径</span><h2>预计路径与影响范围</h2></div><div class="map-legend"><span><i class="legend-dot actual"></i>实况</span><span><i class="legend-line forecast"></i>预测</span><span><i class="legend-ring"></i>风圈</span></div></div>
+          <div class="map-card">
+            <div class="map-controls"><button class="map-control active" data-layer="path">路径</button><button class="map-control" data-layer="wind">风圈</button><span class="map-note">预测路径 · 每 6 小时更新</span></div>
+            <svg class="storm-map" viewBox="0 0 900 470" role="img" aria-label="桦加沙台风路径示意图">
+              <defs><pattern id="grid" width="45" height="45" patternUnits="userSpaceOnUse"><path d="M45 0H0V45" fill="none" stroke="#9ed6d0" stroke-opacity=".12" stroke-width="1"/></pattern><filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <rect width="900" height="470" fill="#0b263c"/><rect width="900" height="470" fill="url(#grid)"/>
+              <path class="coast" d="M0 75 C100 110 145 144 212 159 C284 175 326 142 394 126 C484 104 526 148 585 183 C648 221 698 217 758 269 C802 306 848 343 900 365 L900 470 L0 470Z"/>
+              <path class="island" d="M750 142c-17 24-22 50-9 77 10 20 5 40-10 60-17 22-9 45 12 54 18 8 32-8 39-30 7-24 21-42 33-65 14-26 11-53-7-75-14-17-43-36-58-21Z"/>
+              <g class="map-labels"><text x="108" y="362">福建沿海</text><text x="660" y="125">台湾</text><text x="215" y="107">东海</text><text x="520" y="325">厦门</text><text x="438" y="386">汕头</text></g>
+              <path class="wind-range" d="M220 175 C270 156 311 164 351 192 C390 220 445 245 501 266" fill="none"/>
+              <path class="actual-path" d="M302 86 C291 116 275 142 252 168 C230 193 217 219 202 247" fill="none"/>
+              <path class="forecast-path" d="M202 247 C190 273 181 299 191 326 C203 358 232 378 277 397" fill="none"/>
+              <g class="track-points"><circle cx="302" cy="86" r="5"/><circle cx="277" cy="125" r="5"/><circle cx="252" cy="168" r="5"/><circle cx="225" cy="211" r="5"/><circle cx="202" cy="247" r="10" class="current"/><circle cx="188" cy="290" r="5" class="future"/><circle cx="198" cy="330" r="5" class="future"/><circle cx="230" cy="370" r="5" class="future"/></g>
+              <g class="storm-center" transform="translate(202 247)"><circle r="34"/><circle r="23"/><path d="M-12 0h24M0-12v24"/></g>
+              <g class="map-tooltip" transform="translate(218 212)"><rect width="144" height="48" rx="8"/><text x="12" y="20">当前中心位置</text><text x="12" y="38" class="tooltip-value">22.3°N · 119.8°E</text></g>
+              <g class="time-labels"><text x="260" y="72">09/17 08:00</text><text x="164" y="286">现在 · 14:00</text><text x="248" y="424">09/19 14:00</text></g>
+            </svg>
+            <div class="map-footer"><span><i class="legend-dot actual"></i>实况路径</span><span><i class="legend-line forecast"></i>预测路径</span><span><i class="legend-ring"></i>七级风圈约 280 km</span><button class="text-btn">查看完整预报 <span>↗</span></button></div>
+          </div>
+        </div>
+
+        <aside class="side-column">
+          <div class="section-heading side-heading"><div><span class="section-no">03 / 预警</span><h2>行动建议</h2></div></div>
+          <div class="action-list"><article class="action-item urgent"><span class="action-number">01</span><div><h3>远离海边与低洼地带</h3><p>停止海上作业，不要前往海滩、码头和河道。</p></div></article><article class="action-item"><span class="action-number">02</span><div><h3>检查门窗与排水</h3><p>收好阳台物品，清理排水口，准备手电和饮用水。</p></div></article><article class="action-item"><span class="action-number">03</span><div><h3>留意官方通知</h3><p>如收到转移指令，请跟随社区安排前往安全场所。</p></div></article></div>
+          <div class="source-card"><div class="source-top"><span class="source-icon">⌁</span><div><span class="eyebrow">数据来源</span><strong>演示数据集</strong></div><span class="verified">已校验</span></div><p>本页面使用静态演示数据，数据源接入后将显示官方机构与发布时间。</p><div class="source-time"><span>最后更新</span><strong>2025/09/18 14:20</strong></div></div>
+          <div class="quick-card"><span class="eyebrow">快速了解</span><h3>什么是风圈？</h3><p>风圈表示达到某级风力的可能影响范围，不代表每个位置都会出现同样强度的风。</p><button class="text-btn" id="learnBtn">了解更多 <span>→</span></button></div>
+        </aside>
+      </section>
+    </main>
+    <footer><span>风眼 / 沿海台风实况预警平台</span><span>演示版本 v0.1 · 数据仅供演示使用</span></footer>
+    <div class="toast" id="toast" role="status">演示数据已刷新</div>
+    <script src="app.js"></script>
+  </body>
+</html>
